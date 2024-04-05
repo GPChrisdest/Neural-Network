@@ -27,6 +27,8 @@ https://www.youtube.com/watch?v=EmBntQAnWyc
 Επισης διαβαστε το βιβιλιο του σγαρμπα
 http://neuralnetworksanddeeplearning.com/chap1.html
 
+Για να δουλεψει πρεπει να κανετε add την python στο PATH για να δουλεψει
+Μπορειτε να βρειτε οδηγιες online
 
 ΠΑΡΑΔΟΤΕΑ ΑΠΟ ΔΙΑΦΑΝΕΙΕΣ
 ΣΓΑΡΜΠΑ
