@@ -19,6 +19,10 @@
 
 
 !!!ΣΗΜΑΝΤΙΚΑ!!!
+Για να δουλεψουν τα παρακατω πρεπει να κανετε add την python στο PATH για να δουλεψει
+Μπορειτε να βρειτε οδηγιες online
+Επισης να τσεκαρετε οτι το python terminal ειναι στο folder του κωδικα σας
+
 Πρεπει να εχετε κατεβασμενη python 2.7.18 για να τρεξει και να εγκαταστήσετε pip, numpy και matplotlib (δειτε βιντεο)
 https://www.youtube.com/watch?v=0qwyHdA2_rw&t=98s
 https://www.youtube.com/watch?v=K87M0sMVXZE&t=179s
@@ -27,8 +31,6 @@ https://www.youtube.com/watch?v=EmBntQAnWyc
 Επισης διαβαστε το βιβιλιο του σγαρμπα
 http://neuralnetworksanddeeplearning.com/chap1.html
 
-Για να δουλεψει πρεπει να κανετε add την python στο PATH για να δουλεψει
-Μπορειτε να βρειτε οδηγιες online
 
 ΠΑΡΑΔΟΤΕΑ ΑΠΟ ΔΙΑΦΑΝΕΙΕΣ
 ΣΓΑΡΜΠΑ
