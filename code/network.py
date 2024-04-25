@@ -16,6 +16,8 @@ import random
 # Third-party libraries
 import numpy as np
 
+import cPickle as pickle
+
 class Network(object):
 
     def __init__(self, sizes):
@@ -128,6 +130,27 @@ class Network(object):
         """Return the vector of partial derivatives \partial C_x /
         \partial a for the output activations."""
         return (output_activations-y)
+    
+    def save_data(self):
+        with open('layers.bin', 'wb') as f_layers:
+            pickle.dump(self.num_layers, f_layers, protocol=pickle.HIGHEST_PROTOCOL)
+        with open('sizes.bin', 'wb') as f_sizes:
+            pickle.dump(self.sizes, f_sizes, protocol=pickle.HIGHEST_PROTOCOL)
+        with open('biases.bin', 'wb') as f_biases:
+            pickle.dump(self.biases, f_biases, protocol=pickle.HIGHEST_PROTOCOL)
+        with open('weights.bin', 'wb') as f_weights:
+            pickle.dump(self.weights, f_weights, protocol=pickle.HIGHEST_PROTOCOL)
+            
+    def load_data(self):
+        with open('layers.bin', 'rb') as f_layers:
+            self.num_layers = pickle.load(f_layers)
+        with open('sizes.bin', 'rb') as f_sizes:
+            self.sizes = pickle.load(f_sizes)
+        with open('biases.bin', 'rb') as f_biases:
+            self.biases = pickle.load(f_biases)
+        with open('weights.bin', 'rb') as f_weights:
+            self.weights = pickle.load(f_weights)
+        print(self.sizes)
 
 #### Miscellaneous functions
 def sigmoid(z):
