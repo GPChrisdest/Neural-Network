@@ -1,9 +1,8 @@
-#### Libraries
-# Standard library
-import pickle
+
+import cPickle as pickle
 import gzip
 
-# Third-party libraries
+
 import numpy as np
 import matplotlib.pyplot as plt  # Προσθήκη βιβλιοθήκης για την εμφάνιση των εικόνων
 
@@ -31,7 +30,7 @@ def load_data():
     below.
     """
     with gzip.open('mnist.pkl.gz', 'rb') as f:
-        training_data, validation_data, test_data = pickle.load(f, encoding='latin1')
+        training_data, validation_data, test_data = pickle.load(f)
     return (training_data, validation_data, test_data)
 
 def load_data_wrapper():
@@ -85,7 +84,7 @@ if __name__ == "__main__":
     # Εμφάνιση των πρώτων 5 εικόνων και των αντίστοιχων ετικετών από το σύνολο εκπαίδευσης
     for i in range(5):
         image = training_data[i][0].reshape((28, 28))  # Μετατροπή του διανύσματος 784 σε μορφή εικόνας 28x28
-        label = training_data[i][1].argmax()  # Εύρεση του δείκτη του μεγαλύτερου στοιχείου, που είναι και η ετικέτα
+        label = np.argmax(training_data[i][1])  # Εύρεση του δείκτη του μεγαλύτερου στοιχείου, που είναι και η ετικέτα
         print("Εικόνα {}:".format(i+1))
         print("Ετικέτα:", label)
         plt.imshow(image, cmap='gray')
