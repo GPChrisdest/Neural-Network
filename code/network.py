@@ -13,6 +13,8 @@ and omits many desirable features.
 # Standard library
 import random
 
+import mnist_loader as ml
+
 # Third-party libraries
 import numpy as np
 
@@ -122,9 +124,9 @@ class Network(object):
         network outputs the correct result. Note that the neural
         network's output is assumed to be the index of whichever
         neuron in the final layer has the highest activation."""
-        test_results = [(np.argmax(self.feedforward(x)), y)
-                        for (x, y) in test_data]
-        return sum(int(x == y) for (x, y) in test_results)
+        test_results = [(np.argmax(self.feedforward(test_data[15])), y)
+                        for y in test_data[15]]
+        return sum(int(x == y) for (x,y) in test_results)
 
     def cost_derivative(self, output_activations, y):
         """Return the vector of partial derivatives \partial C_x /
@@ -140,6 +142,7 @@ class Network(object):
             pickle.dump(self.biases, f_biases, protocol=pickle.HIGHEST_PROTOCOL)
         with open('weights.bin', 'wb') as f_weights:
             pickle.dump(self.weights, f_weights, protocol=pickle.HIGHEST_PROTOCOL)
+        print("Successfully saved the training data")
             
     def load_data(self):
         with open('layers.bin', 'rb') as f_layers:
@@ -150,7 +153,17 @@ class Network(object):
             self.biases = pickle.load(f_biases)
         with open('weights.bin', 'rb') as f_weights:
             self.weights = pickle.load(f_weights)
-        print(self.sizes)
+        print("Succesfully loaded the training data.")
+
+    def train(self):
+        self.SGD(training_data, 30, 10, 3.0, test_data=None)
+        self.save_data()
+
+    def load(self):
+        self.load_data()
+
+    def check(self):
+        print("Found: {0} / {1} pictures".format(self.evaluate(test), len(test)))
 
 #### Miscellaneous functions
 def sigmoid(z):
@@ -161,3 +174,21 @@ def sigmoid_prime(z):
     """Derivative of the sigmoid function."""
     return sigmoid(z)*(1-sigmoid(z))
 
+def mnist():
+    global training_data, validation_data, test
+    training_data, validation_data, test = ml.load_data_wrapper()
+    print(test[15][1])
+
+def start():
+    mnist()
+    net = Network([784, 30, 10])
+    net.train()
+
+def load():
+    mnist()
+    net = Network([0,0,0])
+    net.load()
+    net.check()
+
+if __name__ == "__main__":
+    load()
