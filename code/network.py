@@ -19,6 +19,7 @@ import mnist_loader as ml
 import numpy as np
 
 import cPickle as pickle
+import pkl_viewer as pk
 
 class Network(object):
 
@@ -82,7 +83,7 @@ class Network(object):
         self.weights = [w-(eta/len(mini_batch))*nw
                         for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b-(eta/len(mini_batch))*nb
-                       for b, nb in zip(self.biases, nabla_b)]
+                        for b, nb in zip(self.biases, nabla_b)]
 
     def backprop(self, x, y):
         """Return a tuple ``(nabla_b, nabla_w)`` representing the
@@ -119,20 +120,22 @@ class Network(object):
             nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
         return (nabla_b, nabla_w)
 
-    def evaluate(self, test_data):
+    def evaluate(self, test_data, i):
         """Return the number of test inputs for which the neural
         network outputs the correct result. Note that the neural
         network's output is assumed to be the index of whichever
         neuron in the final layer has the highest activation."""
-        test_results = [(np.argmax(self.feedforward(test_data[15])), y)
-                        for y in test_data[15]]
+        x,y = test_data[i]
+        
+        test_results = [(np.argmax(self.feedforward(x)), y)]
+                        
         return sum(int(x == y) for (x,y) in test_results)
 
     def cost_derivative(self, output_activations, y):
         """Return the vector of partial derivatives \partial C_x /
         \partial a for the output activations."""
         return (output_activations-y)
-    
+
     def save_data(self):
         with open('layers.bin', 'wb') as f_layers:
             pickle.dump(self.num_layers, f_layers, protocol=pickle.HIGHEST_PROTOCOL)
@@ -162,9 +165,13 @@ class Network(object):
     def load(self):
         self.load_data()
 
-    def check(self):
-        print("Found: {0} / {1} pictures".format(self.evaluate(test), len(test)))
-
+    def check(self, i):
+        n = self.evaluate(test, i)
+        if n == 1:
+            print("Found: {0} / {1} pictures".format(n, 1))
+            print("The number is: {0}".format(test[i][1]))
+        else:
+            print("Unable to detect the number.")
 #### Miscellaneous functions
 def sigmoid(z):
     """The sigmoid function."""
@@ -177,18 +184,20 @@ def sigmoid_prime(z):
 def mnist():
     global training_data, validation_data, test
     training_data, validation_data, test = ml.load_data_wrapper()
-    print(test[15][1])
 
 def start():
     mnist()
     net = Network([784, 30, 10])
     net.train()
+    return net
 
 def load():
     mnist()
     net = Network([0,0,0])
     net.load()
-    net.check()
+    return net
 
 if __name__ == "__main__":
-    load()
+    net = False
+    net = load()
+    net.check(pk.view())
