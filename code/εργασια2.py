@@ -18,9 +18,11 @@ def number():
     plt.imshow(train_x[i].reshape((28,28)), cmap = cm.Greys_r)
     plt.show()
     f.close()
+    label.status.config(TEXT = 'NUMBER = ' + )
 
 def clear():
     canvas.delete('all')
+    label.status.config(TEXT = 'NUMBER = ' )
 
 button1 = tk.Button(root, text="NUMBER", bg='green', font=('Arial bold', 20), command=number)
 button1.grid(row=1, column=0)
