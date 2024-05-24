@@ -156,7 +156,7 @@ class Network(object):
             self.biases = pickle.load(f_biases)
         with open('weights.bin', 'rb') as f_weights:
             self.weights = pickle.load(f_weights)
-        print("Succesfully loaded the training data.")
+        print("Succesfully loaded the training data!")
 
     def train(self):
         self.SGD(training_data, 30, 10, 3.0, test_data=None)
@@ -168,8 +168,8 @@ class Network(object):
     def check(self, i):
         n = self.evaluate(test, i)
         if n == 1:
-            print("Found: {0} / {1} pictures".format(n, 1))
-            print("The number is: {0}".format(test[i][1]))
+            print("Succesfully found: {0} / {1} pictures".format(n, 1))
+            print("The given hand written number is: {0}".format(test[i][1]))
         else:
             print("Unable to detect the number.")
 #### Miscellaneous functions
