@@ -1,6 +1,8 @@
 import tkinter as tk
 import gzip
 import cPickle
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
 
 
 root = tk.Tk()
@@ -10,8 +12,11 @@ canvas = tk.Canvas(root, width=500, height=500)
 canvas.grid(row=0, column=0, columnspan=3)
 
 def number():
-    import random 
     f = gzip.open('mnist.pkl.gz', 'rb')
+    import random
+    for i in range(100,97,-1):
+    plt.imshow(train_x[i].reshape((28,28)), cmap = cm.Greys_r)
+    plt.show()
     f.close()
 
 def clear():
