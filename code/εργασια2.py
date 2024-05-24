@@ -1,4 +1,7 @@
 import tkinter as tk
+import gzip
+import cPickle
+
 
 root = tk.Tk()
 root.title(u"Εργασία")
@@ -7,7 +10,9 @@ canvas = tk.Canvas(root, width=500, height=500)
 canvas.grid(row=0, column=0, columnspan=3)
 
 def number():
-    canvas.delete('all')
+    import random 
+    f = gzip.open('mnist.pkl.gz', 'rb')
+    f.close()
 
 def clear():
     canvas.delete('all')
