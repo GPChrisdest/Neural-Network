@@ -126,6 +126,8 @@ class Network(object):
         network's output is assumed to be the index of whichever
         neuron in the final layer has the highest activation."""
         x,y = test_data[i]
+
+        global test_results
         
         test_results = [(np.argmax(self.feedforward(x)), y)]
                         
@@ -167,11 +169,11 @@ class Network(object):
 
     def check(self, i):
         n = self.evaluate(test, i)
+        print("The given hand written number is: {0}".format(test_results[0][0]))
         if n == 1:
-            print("Succesfully found: {0} / {1} pictures".format(n, 1))
-            print("The given hand written number is: {0}".format(test[i][1]))
+            print("Succesfully found the picture!")
         else:
-            print("Unable to detect the number.")
+            print("Failed to find the picture!")
 #### Miscellaneous functions
 def sigmoid(z):
     """The sigmoid function."""
