@@ -1,4 +1,4 @@
-import Tkinter as tk
+import tkinter as tk
 
 def create_main_window():
     # Δημιουργία του κύριου παραθύρου
