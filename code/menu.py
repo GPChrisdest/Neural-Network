@@ -31,8 +31,8 @@ def create_main_window():
     def exit():
         return 0
 
-    image=Tkinter.PhotoImage(file="C:\Users\georg\Downloads\up_logo.gif")
-    label=Tkinter.Label(root, image=image, width=350, height=140)
+    image=Tkinter.PhotoImage(file="C:\Users\georg\Downloads\LogoVersionEN.gif")
+    label=Tkinter.Label(root, image=image, width=350, height=170)
     label.grid(row=0, column=0, padx=5, pady=5, sticky="nw")
     label.image=image
     
