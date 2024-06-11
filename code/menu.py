@@ -21,14 +21,18 @@ def create_main_window():
         return 0
 
     def check():
-        return 0
+        root.destroy()
+        check_root =Tkinter.Tk()  # Create the second window
+        check_root.title("Second Window")
+        yes_button = Tkinter.Button(check_root, text = "Select this photo", command = train)
+        no_button = Tkinter.Button(check_root, text = "Move to next photo", command = check)
 
     def exit():
         return 0
        
     # Dhmiourgia koumpiwn me padding gia na perioristei to megisto mege8os
     train_button = Tkinter.Button(root, text = "Train", command = train)
-    check_button = Tkinter.Button(root, text = "Check", command = check)
+    check_button = Tkinter.Button(root, text = "Find hand\nwritten number", command = check)
     exit_button = Tkinter.Button(root, text = "Exit", command = exit)
 
     train_button.pack()
@@ -42,6 +46,7 @@ def create_main_window():
     exit_button.grid(row=0, column=2, sticky='nsew', padx=10, pady=10, ipadx=10, ipady=10)
    
     return root
+        
 
 if __name__ == "__main__":
     main_window = create_main_window()
