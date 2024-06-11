@@ -1,5 +1,7 @@
 import Tkinter 
 import tkMessageBox
+import pkl_viewer as pk
+
 
 def create_main_window():
     # Dhmioyrgia kyrioy para8yrou
@@ -22,7 +24,8 @@ def create_main_window():
 
     def check():
         root.destroy()
-        check_root =Tkinter.Tk()  # Create the second window
+        pk.view()
+        check_root =Tkinter.Tk() 
         check_root.title("Second Window")
         yes_button = Tkinter.Button(check_root, text = "Select this photo", command = train)
         no_button = Tkinter.Button(check_root, text = "Move to next photo", command = check)
