@@ -171,9 +171,9 @@ class Network(object):
         n = self.evaluate(test, i)
         print("The given hand written number is: {0}".format(test_results[0][0]))
         if n == 1:
-            print("Succesfully found the picture!")
+            print("Succesfully found the picture!\n")
         else:
-            print("Failed to find the picture!")
+            print("Failed to find the picture!\n")
 #### Miscellaneous functions
 def sigmoid(z):
     """The sigmoid function."""
@@ -188,6 +188,7 @@ def mnist():
     training_data, validation_data, test = ml.load_data_wrapper()
 
 def start():
+    print("Started training process...")
     mnist()
     net = Network([784, 30, 10])
     net.train()
@@ -199,7 +200,7 @@ def load():
     net.load()
     return net
 
-if __name__ == "__main__":
+def net():
     net = False
     net = load()
-    net.check(pk.view())
+    net.check(pk.number_return())
