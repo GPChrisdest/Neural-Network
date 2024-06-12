@@ -7,13 +7,13 @@ import network as nt
 def create_main_window():
     # Dhmioyrgia kyrioy para8yrou
     root = Tkinter.Tk()
-    root.title("My App")
+    root.title("Hand written numbers ditector")
 
     # Orismos xrwmatos
-    root.configure(bg='#2E3944')
+    root.configure(bg="#2E3944")
 
     # Orismos ellaxistoy mege8ous para8yrou
-    root.minsize(600, 400)
+    root.minsize(350, 200)
 
     def train():
         root.destroy()
@@ -23,20 +23,23 @@ def create_main_window():
         root.destroy()
         pk.view()
         check_root =Tkinter.Tk() 
-        check_root.title("Second Window")
+        check_root.title("Hand written numbers ditector")
         check_root.configure(bg='#2E3944')
-        check_root.minsize(300, 300)
+        check_root.minsize(350, 300)
+        text=Tkinter.Label(check_root, text="Do you want to select this photo?",bg="#2E3944" ,font=("Helvetica",15,"bold"))
         yes_button=Tkinter.Button(check_root, text="Select this photo", command=train, width=15, height=4, bg="#D3D9D4", font=("Helvetica",10,"bold"))
         no_button=Tkinter.Button(check_root, text="Move to next photo", command=check, width=15, height=4, bg="#D3D9D4", font=("Helvetica",10,"bold"))
         exit1_button=Tkinter.Button(check_root, text="Exit", command=lambda: exit(check_root), width=15, height=4, bg="#D3D9D4", font=("Helvetica",10,"bold"))
 
+        text.pack()
         yes_button.pack()
         no_button.pack()
         exit1_button.pack()
 
-        yes_button.grid(row=1, column=0, pady=(0,10))
-        no_button.grid(row=2, column=0, pady=(0,10))
-        exit1_button.grid(row=3, column=0, pady=(0,10))
+        text.grid(row=1, column=0,pady=(0,10))
+        yes_button.grid(row=2, column=0, pady=(0,10))
+        no_button.grid(row=3, column=0, pady=(0,10))
+        exit1_button.grid(row=4, column=0, pady=(0,10))
         check_root.grid_columnconfigure(0,weight=1)
 
         return check_root

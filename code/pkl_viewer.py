@@ -4,6 +4,7 @@ from time import sleep
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 from random import randint
+import menu
 
 def view():
     plt.ion()
