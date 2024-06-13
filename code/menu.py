@@ -18,6 +18,7 @@ def create_main_window():
     def train():
         root.destroy()
         nt.start()
+        create_main_window()
 
     def exit(name):
         name.destroy()
